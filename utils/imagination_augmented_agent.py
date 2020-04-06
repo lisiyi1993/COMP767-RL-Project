@@ -17,9 +17,8 @@ import matplotlib.pyplot as plt
 
 
 
-I2A_PATH = os.path.join("..", "training", "Imagination_Augmented_Agents")
 ENVIRONMENT_PATH = os.path.join("..", "training", "environment_model")
-DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+DEVICE = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
 
 pixels = (
@@ -233,10 +232,12 @@ class I2A(nn.Module):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--epoch", default=int(5e5), type=int)
+    parser.add_argument("--epoch", default=int(1e5), type=int)
+    parser.add_argument("--rollout", default=int(5), type=int)
     parser.add_argument("--full_rollout", action='store_true')
     args = parser.parse_args()
 
+    I2A_PATH = os.path.join("..", "training", f"imagination_augmented_agents_rollout_{args.rollout}")
     mode = "regular"
     num_envs = 16
 
@@ -261,6 +262,7 @@ if __name__ == "__main__":
     num_steps = 5
     num_frames = args.epoch
     full_rollout = args.full_rollout
+    num_rollout = args.rollout
 
     env_model = EnvModel(envs.observation_space.shape, envs.action_space.n, num_pixels, num_rewards)
     env_model.load_state_dict(torch.load(os.path.join(ENVIRONMENT_PATH, "env_model")))
@@ -269,7 +271,7 @@ if __name__ == "__main__":
     distil_optimizer = optim.Adam(distil_policy.parameters())
 
     rollout = RolloutStorage(num_steps, num_envs, envs.observation_space.shape)
-    imagination = ImaginationCore(1, state_shape, num_actions, num_rewards, env_model, distil_policy, full_rollout=full_rollout)
+    imagination = ImaginationCore(num_rollout, state_shape, num_actions, num_rewards, env_model, distil_policy, full_rollout=full_rollout)
     actor_critic = I2A(state_shape, num_actions, num_rewards, 256, imagination, full_rollout=full_rollout)
 
     #rmsprop hyperparams:
