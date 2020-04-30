@@ -178,10 +178,10 @@ class PillEater(object):
       self.timer_terminate = -1
     elif self.mode == 'avoid':
       self.step_reward = 0.1
-      self.food_reward = -0.1
-      self.big_pill_reward = -5
-      self.ghost_hunt_reward = -10
-      self.ghost_death_reward = -20
+      self.food_reward = 0
+      self.big_pill_reward = 0
+      self.ghost_hunt_reward = 0
+      self.ghost_death_reward = 0
       self.all_pill_terminate = False
       self.all_ghosts_terminate = False
       self.all_food_terminate = True

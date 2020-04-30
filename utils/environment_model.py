@@ -38,7 +38,7 @@ num_pixels = len(pixels)
 #For each mode in MiniPacman there are different rewards
 mode_rewards = {
     "regular": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    "avoid":   [0.1, -0.1, -5, -10, -20],
+    "avoid":   [0.1, 0, 0, 0, 0],
     "hunt":    [0, 1, 10, -20],
     "ambush":  [0, -0.1, 10, -20],
     "rush":    [0, -0.1, 9.9]
