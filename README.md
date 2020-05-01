@@ -1,5 +1,5 @@
 # Comparison of Environment Model Augmented Agents with Strong Model-Free Agents
-This is the Github repository for COMP767 with team member being Si Yi Li and Zhi Wen.
+This is the Github repository for COMP767 final prject with team member being Si Yi Li and Zhi Wen.
 
 
 ## This project consists of the following parts.
