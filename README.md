@@ -5,7 +5,7 @@ This is the Github repository for COMP767 final prject with team member being Si
 ## This project consists of the following parts.
 
 #### [[minipacman.ipynb]](https://github.com/lisiyi1993/COMP767-RL-Project/blob/master/minipacman.ipynb)
-This is the notebook for showing how does the Minipacman work.
+This is the notebook for showing how does the Minipacman environment work.
 
 
 #### [[actor_critic.ipynb]](https://github.com/lisiyi1993/COMP767-RL-Project/blob/master/actor_critic.ipynb)
